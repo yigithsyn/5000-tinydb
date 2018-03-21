@@ -1,0 +1,6 @@
+pywin32==221
+Flask==0.12.2
+tinydb==3.8.0
+Flask_RESTful==0.3.6
+Flask_Cors==3.0.3
+win32gui==221.6
