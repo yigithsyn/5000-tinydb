@@ -136,4 +136,4 @@ api.add_resource(TinyDB_Table, '/tinydb/<table>')
 api.add_resource(TinyDB_Item, '/tinydb/<table>/<doc_id>')
 
 balloon_tip('Service: 5000-tinydb', 'Started successfully!')
-app.run(port=5000, debug=True)
+app.run(port=5000)
