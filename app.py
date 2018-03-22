@@ -104,6 +104,10 @@ class TinyDB_Table(Resource):
     table = tinydbDatabase.table(table)
     return table.insert(request.json)
 
+  def delete(self, table):
+    tinydbDatabase.purge_table(table)
+    return {}
+
 class TinyDB_Item(Resource):
   def get(self, table, doc_id):
     table = tinydbDatabase.table(table)
@@ -117,10 +121,10 @@ class TinyDB_Item(Resource):
   def post(self, table, doc_id):
     table = tinydbDatabase.table(table)
     try:
-      table.update(request.json(), doc_ids=[int(doc_id)])
+      table.update(request.json, doc_ids=[int(doc_id)])
       return {}
     except Exception:
-      return {"error": {"type": "api", "msg": "TinyDB_Item: PUT\n" + str(traceback.format_exc())}}
+      return {"error": {"type": "api", "msg": "TinyDB_Item: POST\n" + str(traceback.format_exc())}}
 
   def delete(self, table, doc_id):
     table = tinydbDatabase.table(table)
