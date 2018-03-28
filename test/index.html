@@ -7,9 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>5000-tinydb</title>
 
-  <link rel="stylesheet" href="bower_components/webix/codebase/webix.css" type="text/css" charset="utf-8">
-  <script src="bower_components/webix/codebase/webix.js" type="text/javascript" charset="utf-8"></script>
-  <script src="bower_components/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="bower_components/webix/codebase/webix.css" type="text/css">
+  <script src="bower_components/webix/codebase/webix.js"></script>
+  <script src="bower_components/ace-builds/src-noconflict/ace.js"></script>
 
   <style type="text/css" media="screen">
   </style>
@@ -20,23 +20,13 @@
   </div>
 
   <script>
-    function formatBytes(a, b) { if (0 == a) return "0 Bytes"; var c = 1024, d = b || 2, e = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"], f = Math.floor(Math.log(a) / Math.log(c)); return parseFloat((a / Math.pow(c, f)).toFixed(d)) + " " + e[f] }
-
     function IsJsonString(str) {
-      try {
-        JSON.parse(str);
-      } catch (e) {
-        return false;
-      }
+      try { JSON.parse(str); } 
+      catch (e) { return false; }
       return true;
     }
 
     webix.ready(function () {
-      var myjson = webix.DataDriver.myjson = webix.copy(webix.DataDriver.json);
-      myjson.child = function (obj) {
-        return obj.children;
-      };
-
       webix.ui({
         rows: [
           { template: '<div id="editor" style="height: -webkit-fill-available;">{"name": "test"}</div>' },
